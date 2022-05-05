@@ -16,15 +16,21 @@ class HomeController extends AbstractController
     public function index(Request $request): Response
     {
 
+
         $expert=new Expert();
-        $form = $this->createFormBuilder($expert)
-            ->add('Email',texttype::class)
-            ->add('Mot de passe',texttype::class);
+        $form = $this->createFormBuilder(LoginType::class, (array)$expert)
+            ->add('email',texttype::class)
+            ->add('password',texttype::class);
 
         $form = $this->createForm(LoginType::class, $form);
         return $this->renderForm(':home:index.html.twig', [
             'form' => $form,]);
     }
-
+    public function configureOptions(OptionsResolver $resolver): void
+    {
+        $resolver->setDefaults([
+            'data_class' => LoginType::class,
+        ]);
+    }
 
 }

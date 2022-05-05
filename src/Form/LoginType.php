@@ -13,13 +13,9 @@ class LoginType extends AbstractType
     {
         $builder
             ->add('email')
-            ->add('roles')
+
             ->add('password')
-            ->add('Name')
-            ->add('FirstName')
-            ->add('tel')
-            ->add('Etat')
-            ->add('Nombre_H_Fait')
+
         ;
     }
 
